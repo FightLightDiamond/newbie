@@ -11,7 +11,12 @@ make docker-connect
  cp .env.example .env
 ```
 
-### 
+### Install package
+```angular2html
+composer install
+```
+
+### Generate key
 ```angular2html
 php artisan key:generate
 ```
@@ -23,27 +28,6 @@ php artisan config:clear
 ### Migrate db
 ```angular2html
 php artisan migrate
-```
-
-### Seed db
-```angular2html
-php artisan make:seed UsersTableSeeder
-```
-
-### Content UsersTableSeeder
-```angular2html
-class UsersTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        factory(\App\User::class, 100)->create();
-    }
-}
 ```
 
 ### Run seed

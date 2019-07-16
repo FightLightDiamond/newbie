@@ -1,0 +1,33 @@
+version: '3'
+services:
+  api:
+    container_name: newbie
+    build: .
+    ports:
+     - "4005:8001"
+    volumes:
+     - .:/var/www/newbie
+    links:
+     - redis
+     - db
+  redis:
+    image: "redis:alpine"
+    ports:
+     - "6378:6379"
+#  echo-server:
+#    image: "lagun4ik/laravel-echo-server"
+#    ports:
+#     - "6009:6001"
+#    volumes:
+#     - .:/app
+#    links:
+#     - redis
+#     - api
+  db:
+    image: "mariadb:10.1.30"
+    environment:
+     MYSQL_ROOT_PASSWORD: "1"
+     MYSQL_DATABASE: "newbie"
+    ports:
+     - "3309:3306"
+

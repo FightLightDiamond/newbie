@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
@@ -23,5 +24,27 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+    ];
+});
+
+$factory->define(\App\Models\Image::class, function (Faker $faker) {
+    return [
+        'user_id' => rand(1, 100),
+        'title' => $faker->name,
+        'description' => $faker->text,
+        'image' => 'http://lorempixel.com/400/200/nature/',
+        'album_id' => rand(1, 20),
+        'like' => rand(10, 200),
+        'views' => rand(10, 200),
+    ];
+});
+
+$factory->define(\App\Models\Album::class, function (Faker $faker) {
+    return [
+        'user_id' => rand(1, 100),
+        'title' => $faker->name,
+        'description' => $faker->text,
+        'like' => rand(10, 200),
+        'views' => rand(10, 200),
     ];
 });

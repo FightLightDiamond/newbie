@@ -4,7 +4,7 @@ services:
     container_name: newbie
     build: .
     ports:
-     - "4005:8001"
+     - "4005:4005"
     volumes:
      - .:/var/www/newbie
     links:

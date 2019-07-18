@@ -24,6 +24,6 @@ CMD ["/usr/local/bin/run.sh"]
 
 WORKDIR /var/www/newbie
 
-EXPOSE 8001
+EXPOSE 4005
 
-CMD ["php", "-S", "0.0.0.0:8001", "-t", "/var/www/newbie/public"]
+CMD ["php", "-S", "0.0.0.0:4005", "-t", "/var/www/newbie/public"]

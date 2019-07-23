@@ -1,4 +1,9 @@
 # Newbie
+## Link
+Source: https://github.com/FightLightDiamond/newbie
+Lesson: http://cuongpm.viralsoft.vn/tutorial/show/4
+Channel telegram: https://t.me/laravel_newbie
+
 ## Setup
 ### Docker setup
 ```angular2html

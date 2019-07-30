@@ -40,6 +40,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+	public function scopeFilter($query, $input)
+	{
+		foreach ($this->fillable as $value) {
+			if (isset($input[$value])) {
+				$query->where($value, $input[$value]);
+			}
+		}
+
+		return $query;
+	}
+
     public function images()
     {
         return $this->hasMany(Image::class, 'user_id');
@@ -55,4 +66,19 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id');
     }
 
+	public function likeImages()
+	{
+		return $this->belongsToMany(Image::class, 'image_user_likes',
+			'user_id', 'image_id')->withTimestamps();
+	}
+
+	public function scopeLikeImage($query, $imageId, $isLike = false)
+	{
+		return $query->find(auth()->id())->likeImages()->sync($imageId, ['is_like' => $isLike]);
+	}
+
+	public function scopeMy($query)
+	{
+		return $query->where('id', auth()->id());
+	}
 }

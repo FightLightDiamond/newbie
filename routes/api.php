@@ -20,3 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('user-find/{id}', function ($id) {
     return \App\User::find($id);
 })->name('user.find');
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+	Route::resource('users', 'UserController');
+});
+
+Route::namespace('API')->name('api.')->group(function () {
+	Route::put('user-like-images/{imageId}/{isLike}', 'UserImageController@likeOrDislike');
+});

@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d9ca6165a4c3e002dbf78d274001bcd",
+    "content-hash": "7d14ab0679632ac24441bc5af1facec2",
     "packages": [
+        {
+            "name": "cuongpm/ip-active",
+            "version": "v0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FightLightDiamond/IPActive.git",
+                "reference": "41c136dfa26f8db8ced02530445fc4ff9937b1b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FightLightDiamond/IPActive/zipball/41c136dfa26f8db8ced02530445fc4ff9937b1b0",
+                "reference": "41c136dfa26f8db8ced02530445fc4ff9937b1b0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "IPActive\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fight Light Diamond",
+                    "email": "i.am.m.cuong@gmail.com",
+                    "homepage": "http://cuongpm.viralsoft.vn/"
+                }
+            ],
+            "keywords": [
+                "IP",
+                "access",
+                "active",
+                "javascript",
+                "laravel",
+                "limit",
+                "time",
+                "user"
+            ],
+            "time": "2019-07-24T03:49:04+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

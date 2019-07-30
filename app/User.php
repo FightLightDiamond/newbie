@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Album;
 use App\Models\Image;
+use App\Models\ImageUserLike;
 use App\Models\Profile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -72,13 +73,29 @@ class User extends Authenticatable
 			'user_id', 'image_id')->withTimestamps();
 	}
 
-	public function scopeLikeImage($query, $imageId, $isLike = false)
+	public function likeImage($imageId, $isLike = false)
 	{
-		return $query->find(auth()->id())->likeImages()->sync($imageId, ['is_like' => $isLike]);
+		return $this->likeImages()->attach($imageId, ['is_like' => $isLike]);
+	}
+
+	public function likeOrDislikeImage($imageId, $isLike = false)
+	{
+		$updated = $this->imageUserLikes()->where('image_id', $imageId)->update(['is_like' => $isLike]);
+
+		if($updated === 0) {
+			return $this->likeImage($imageId, $isLike);
+		}
+
+		return $updated;
 	}
 
 	public function scopeMy($query)
 	{
 		return $query->where('id', auth()->id());
+	}
+
+	public function imageUserLikes()
+	{
+		return $this->hasMany(ImageUserLike::class, 'user_id');
 	}
 }

@@ -28,4 +28,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 Route::namespace('API')->name('api.')->group(function () {
 	Route::put('user-like-images/{imageId}/{isLike}', 'UserImageController@likeOrDislike');
+	Route::get('user-like-images-count', 'UserImageController@countImages');
+	Route::get('user-like-images', 'UserImageController@getImages');
 });

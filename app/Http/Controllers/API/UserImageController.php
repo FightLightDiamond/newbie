@@ -7,17 +7,38 @@ use App\Http\Controllers\Controller;
 
 class UserImageController extends Controller
 {
-	protected $model;
 
 	public function likeOrDislike($imageId, $isLike)
     {
-    	if(!auth()->check()) {
-    		auth()->loginUsingId(rand(1, 5));
-	    }
+	    $user = auth()->loginUsingId(1);
 
-    	$user = auth()->user();
-    	$result = $user->likeImage($imageId, $isLike);
+    	$result = $user->likeOrDislikeImage($imageId, $isLike);
 
     	return response()->json($result);
+    }
+
+    public function countImages(Request $request)
+    {
+    	$input = $request->all();
+
+    	$user = auth()->loginUsingId(1);
+
+	    $result = $user->likeImages()->filter($input)->count();
+
+	    return response()->json($result);
+    }
+
+    public function getImages(Request $request)
+    {
+	    $input = $request->all();
+	    $input['user_id'] = 1;
+
+	    $input = $request->all();
+
+	    $user = auth()->loginUsingId(1);
+
+	    $result = $user->likeImages()->filter($input)->simplePaginate();
+
+	    return response()->json($result);
     }
 }

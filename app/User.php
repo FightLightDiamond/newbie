@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Album;
 use App\Models\Image;
+use App\Models\Profile;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,6 +48,11 @@ class User extends Authenticatable
     public function albums()
     {
         return $this->hasMany(Album::class, 'user_id');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class, 'user_id');
     }
 
 }

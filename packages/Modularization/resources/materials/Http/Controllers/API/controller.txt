@@ -64,7 +64,7 @@ class _class_APIController extends Controller
             $input = $request->all();
             $data = $this->service->index($input);
 
-            return new _class_ResourceCollection($data);
+            return response()->json(new _class_ResourceCollection($data));
         } catch (\Exception $exception) {
             logger($exception->getMessage());
             return response()->json($exception->getMessage());
